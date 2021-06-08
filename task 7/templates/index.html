@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о номере телефона</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+</head>
+<body>
+        <div class="wrapper">
+            <div class="header">
+                <h1 class="title">
+                    Информация о номере телефона
+                </h1>
+                <h3 class="subtitle">
+                    Выписка из реестра российской системы и плана нумерации
+                </h3>
+                <div>
+                    <a href="https://rossvyaz.gov.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii">Сайт Федерального агенства связи</a>
+                </div>
+            </div>
+
+            <div class="form">
+                <span class="span">Форма для ввода номера телефона</span>
+                <form action="" method="post">
+                    <input type="text" class="phone" name="phone">
+                    <input type="submit" class="btn">
+                </form>
+            </div>
+            
+    
+            {% if info %}
+                <div class="info">
+                    <div class="column">
+                        <div class="row"><span>КОД ОПЕРАТОРА:</span> <span>{{info[0]}}</span></div>
+                        <div class="row"><span>ДИАПАЗОН:</span> <span>{{info[1]}} - {{info[2]}}</span></div>
+                        <div class="row"><span>ЕМКОСТЬ:</span> <span>{{info[3]}}</span></div>
+                        <div class="row"><span>ОПЕРАТОР:</span> <span>{{info[4]}}</span></div>
+                        <div class="row"><span>РЕГИОН:</span> <span>{{info[5]}}</span></div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+     <script>$(".phone").mask("+7(999)999-9999")</script>
+</body>
+</html>
